@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nguyen Trang Linh — Personal Portfolio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
+:root{--ink:#25283d;--muted:#777785;--pink:#d99aa9;--soft:#f7edef;--cream:#fcf8f5;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
+a{color:inherit;text-decoration:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:20;background:rgba(252,248,245,.82);backdrop-filter:blur(14px);border-bottom:1px solid #eadfe1}
+.nav-inner{max-width:1120px;margin:auto;padding:18px 28px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:700;letter-spacing:.08em;font-size:14px}.nav-links{display:flex;gap:28px;font-size:13px;color:var(--muted)}
+.nav-links a:hover{color:var(--pink)}
+.hero{min-height:100vh;display:flex;align-items:center;max-width:1120px;margin:auto;padding:120px 28px 70px}
+.hero-grid{width:100%;display:grid;grid-template-columns:1.15fr .85fr;gap:80px;align-items:center}
+.kicker{font-size:12px;letter-spacing:.18em;color:var(--pink);font-weight:700;margin-bottom:18px}
+h1{font-family:'Playfair Display',serif;font-size:clamp(56px,8vw,100px);line-height:.92;font-weight:500;letter-spacing:-.045em}
+.hero h1 span{display:block;color:var(--pink)}
+.hero-copy{margin-top:28px;max-width:560px;color:var(--muted);font-size:16px}
+.buttons{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{padding:12px 20px;border-radius:999px;border:1px solid var(--ink);font-size:13px;font-weight:600;transition:.2s}
+.btn.primary{background:var(--ink);color:#fff}.btn:hover{transform:translateY(-2px)}
+.visual{position:relative;min-height:440px;display:flex;align-items:center;justify-content:center}
+.orb{width:330px;height:330px;border-radius:50%;background:var(--soft);border:1px solid #ead4d8;position:relative}
+.orb:before{content:"";position:absolute;width:150px;height:150px;border-radius:50%;background:var(--pink);opacity:.28;right:-25px;top:30px}
+.orb:after{content:"L";position:absolute;font-family:'Playfair Display';font-size:230px;line-height:1;color:var(--ink);left:94px;top:40px}
+.badge{position:absolute;background:#fff;padding:14px 18px;border-radius:16px;box-shadow:0 12px 35px #4b324010;font-size:12px;font-weight:600}
+.b1{top:70px;left:5px}.b2{bottom:75px;right:5px}.b3{bottom:15px;left:55px}
+section{max-width:1120px;margin:auto;padding:100px 28px}
+.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:45px}
+.num{font-size:11px;color:var(--pink);letter-spacing:.16em;font-weight:700}
+h2{font-family:'Playfair Display';font-size:48px;font-weight:500;line-height:1.05;margin-top:8px}
+.section-intro{max-width:430px;color:var(--muted);font-size:14px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.card{background:#fff;border:1px solid #eadfe1;border-radius:22px;padding:30px}
+.card h3{font-size:14px;margin-bottom:16px;letter-spacing:.04em}
+.card p,.card li{font-size:14px;color:var(--muted)}
+.quote{background:var(--soft);font-family:'Playfair Display';font-size:27px;line-height:1.35;color:var(--ink)}
+.experience{border-top:1px solid #dfd3d5}
+.exp-row{display:grid;grid-template-columns:180px 1fr;gap:50px;padding:34px 0;border-bottom:1px solid #dfd3d5}
+.exp-meta{font-size:12px;color:var(--muted)}.exp-title{font-size:21px;font-weight:600}.exp-sub{color:var(--pink);font-size:12px;font-weight:700;letter-spacing:.08em;margin:4px 0 16px}
+.exp-list{list-style:none}.exp-list li{margin:9px 0;color:var(--muted);font-size:14px}.exp-list li:before{content:"—";margin-right:10px;color:var(--pink)}
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.skill{background:#fff;border:1px solid #eadfe1;border-radius:18px;padding:22px;min-height:120px}.skill strong{display:block;margin-bottom:8px}.skill span{font-size:13px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:10px}.tag{padding:10px 15px;border-radius:999px;background:var(--soft);font-size:13px}
+footer{padding:70px 28px 35px;background:var(--ink);color:#fff}.footer-inner{max-width:1120px;margin:auto}.footer-title{font-family:'Playfair Display';font-size:54px;max-width:650px;line-height:1.05}.footer-link{display:inline-block;margin-top:28px;color:#fff;border-bottom:1px solid var(--pink);padding-bottom:5px}.footer-bottom{margin-top:70px;color:#aaa;font-size:12px;display:flex;justify-content:space-between}
+.reveal{opacity:0;transform:translateY(24px);transition:.7s ease}.reveal.show{opacity:1;transform:none}
+@media(max-width:800px){.nav-links{display:none}.hero-grid,.about-grid{grid-template-columns:1fr}.visual{min-height:350px}.orb{width:270px;height:270px}.orb:after{font-size:190px;left:77px}.skills{grid-template-columns:1fr 1fr}.exp-row{grid-template-columns:1fr;gap:12px}h2{font-size:40px}.section-head{display:block}.section-intro{margin-top:15px}.footer-title{font-size:42px}}
+@media(max-width:500px){.skills{grid-template-columns:1fr}.hero{padding-top:110px}.badge{font-size:10px}.b1{left:0}.b2{right:0}}
+</style>
+</head>
+<body>
+<nav>
+<div class="nav-inner">
+<div class="logo">NTL.</div>
+<div class="nav-links">
+<a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#interests">Interests</a><a href="#contact">Contact</a>
+</div>
+</div>
+</nav>
+
+<header class="hero">
+<div class="hero-grid">
+<div class="reveal">
+<div class="kicker">PERSONAL PORTFOLIO · 2026</div>
+<h1>Nguyen<br><span>Trang Linh</span></h1>
+<p class="hero-copy">Finance student interested in business, strategic thinking, financial analysis, and learning through real-world problems.</p>
+<div class="buttons"><a class="btn primary" href="#about">Explore my portfolio</a><a class="btn" href="#contact">Get in touch</a></div>
+</div>
+<div class="visual reveal">
+<div class="orb"></div>
+<div class="badge b1">FINANCE STUDENT</div>
+<div class="badge b2">CURIOUS · PROACTIVE</div>
+<div class="badge b3">HANOI · VIETNAM</div>
+</div>
+</div>
+</header>
+
+<section id="about">
+<div class="section-head reveal"><div><div class="num">01 / ABOUT</div><h2>A little<br>about me.</h2></div><p class="section-intro">A snapshot of my academic background, mindset, and the way I approach new challenges.</p></div>
+<div class="about-grid">
+<div class="card reveal"><h3>MY STORY</h3><p>I am a Finance student at Foreign Trade University, majoring in Financial Analysis and Investment. I enjoy exploring business problems, learning from cases, and working with people who bring different perspectives.</p></div>
+<div class="card quote reveal">“Stay curious.<br>Break problems down.<br>Learn by doing.”</div>
+<div class="card reveal"><h3>EDUCATION</h3><p><strong style="color:var(--ink)">Foreign Trade University</strong><br>2025 — Present<br>Financial Analysis and Investment</p></div>
+<div class="card reveal"><h3>PERSONAL</h3><p>21 August 2007<br>Hanoi, Vietnam<br>English · IELTS 6.5</p></div>
+</div>
+</section>
+
+<section id="experience">
+<div class="section-head reveal"><div><div class="num">02 / EXPERIENCE</div><h2>Things I've<br>worked on.</h2></div><p class="section-intro">Academic competition experience that helped me build practical business and teamwork skills.</p></div>
+<div class="experience">
+<div class="exp-row reveal"><div class="exp-meta">NATIONAL ECONOMICS UNIVERSITY<br>YEC</div><div><div class="exp-title">Case Challenge Competitor</div><div class="exp-sub">YOUNG ECONOMISTS CLUB</div><ul class="exp-list"><li>Participated in Case Challenge competitions organized and co-organized by YEC.</li><li>Worked with team members to analyze business cases and conduct market research.</li><li>Developed strategic solutions and practical recommendations for real-world business problems.</li><li>Strengthened critical thinking, problem-solving, teamwork, and presentation skills.</li><li>Learned from different cases and competitors to improve business thinking and adaptability.</li></ul></div></div>
+</div>
+</section>
+
+<section id="skills">
+<div class="section-head reveal"><div><div class="num">03 / TOOLKIT</div><h2>What I<br>bring.</h2></div><p class="section-intro">A combination of analytical, collaborative, communication, and digital skills.</p></div>
+<div class="skills">
+<div class="skill reveal"><strong>Problem Solving</strong><span>Problem analysis · structured thinking · practical solutions</span></div>
+<div class="skill reveal"><strong>Teamwork</strong><span>Collaboration · responsibility · idea sharing</span></div>
+<div class="skill reveal"><strong>Communication</strong><span>Presentation · clear communication · discussion</span></div>
+<div class="skill reveal"><strong>Digital</strong><span>Excel · PowerPoint · MOS Word/Excel/PowerPoint Expert</span></div>
+</div>
+</section>
+
+<section id="interests">
+<div class="section-head reveal"><div><div class="num">04 / INTERESTS</div><h2>Beyond<br>the classroom.</h2></div><p class="section-intro">The topics and activities that keep me curious and continuously learning.</p></div>
+<div class="tags reveal">
+<div class="tag">Business & Finance</div><div class="tag">Business Reading</div><div class="tag">Case Challenges</div><div class="tag">Academic Competitions</div><div class="tag">Team Activities</div><div class="tag">Volunteering</div><div class="tag">Sports & Running</div><div class="tag">Travel</div><div class="tag">New Experiences</div>
+</div>
+</section>
+
+<footer id="contact">
+<div class="footer-inner">
+<div class="num">05 / LET'S CONNECT</div>
+<div class="footer-title">Always open to learning, meeting new people, and exploring new opportunities.</div>
+<a class="footer-link" href="mailto:trang.linhnguyen2108@gmail.com">trang.linhnguyen2108@gmail.com ↗</a>
+<div class="footer-bottom"><span>NGUYEN TRANG LINH</span><span>HANOI · VIETNAM</span></div>
+</div>
+</footer>
+<script>
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
